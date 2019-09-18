@@ -102,6 +102,12 @@ root.right = right
 
 # HEAPS 
 # MAX HEAP - largest value is alwaysat the top, smallest values in leaf nodes. The Parent node value is larger than both of it's children
+
+#Heaps are not stored as linked lists but rather as array with nodes having the relationship:
+# parent = (i - 1) // 2
+# left = 2 * i + 1
+# right = 2 * i + 2
+
 # An array-based implementation of the max-heap.
 class MaxHeap :
 # Create a max-heap with maximum capacity of maxSize.
@@ -134,7 +140,7 @@ class MaxHeap :
 	# Sift the value at the ndx element up the tree.
 	def _siftUp( self, ndx ):
 		if ndx > 0 :
-			parent = ndx // 2
+			parent = ndx - 1 // 2
 			if self._elements[ndx] > self._elements[parent] :
 				tmp = self._elements[ndx]
 				self._elements[ndx] = self._elements[parent]
@@ -154,6 +160,7 @@ class MaxHeap :
 		# the largest value and repeat the process.
 		if largest != ndx :
 			swap( self._elements[ndx], self._elements[largest] )
+			#node is now at the largest index, sift it down again
 			_siftDown( largest )
 
 def simpleHeapSort( theSeq ):
