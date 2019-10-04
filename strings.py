@@ -32,4 +32,8 @@ def substrCount(n, s):
         prev = v
     return tot    
 s = 'acddfdfd'
-print(enumerate(s))
+c = [1,2,3,6,7,8]
+#print(enumerate(s))
+
+for i,char in enumerate(c):
+    print(char)
