@@ -86,3 +86,7 @@ def correctSolution(n, arr):
 	return sum(dp)
 
 print(correctSolution(n, arr))
+
+#IMPORTANT THINGS I LEARNT FROM THIS CHALLENGE
+#1. rise and fall pattern of numbers
+#2. carrying a sum forward and carring sum backward for rise and fall patterns
