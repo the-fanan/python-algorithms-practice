@@ -94,4 +94,4 @@ print(correctSolution(n, arr))
 #How I came about my finale answer
 #1. first I implement complex algorithm to assign values based on the size of each element's previous and next neighbour
 #2. I noticed that for consecutive occurence of "currentNum < left and currentNum > right" the number 3 will be repeated and my algorithm will not produce a number greater than 3 bcause it can only see three values (itself, previous and next)
-#3. I add two loops to carry sums for rising numbers (The two loops go both forward and backward)
+#3. I add two loops to carry sums for rising numbers (The two loops go both forward and backward) to combat the bug noted in line 2
