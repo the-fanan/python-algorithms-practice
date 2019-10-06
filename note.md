@@ -9,5 +9,5 @@ I have noticed I approach problems in a brute force manner. However, from soluti
 
 Patterns I have noticed so far
 ===============================
-1. Rise, fall, valleys and peak pattenrs of numbers
+1. Rise, fall, valleys and peak patterns of numbers
 2. When there are sequential numbers that are scattered and you ned to find minimum actions to take a sorting algorithm will most likely be the clue.
