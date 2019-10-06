@@ -46,7 +46,7 @@ def handleLast(currentNum, left, candies):
 # Complete the candies function below.
 def candies(n, arr):
 	totalCandies = []
-	for i in range(len(arr)):
+	for i in range(n):
 		left = 0
 		right = 0
 		currentNum = arr[i]
@@ -63,17 +63,26 @@ def candies(n, arr):
 		else:
 			candy = handleMidCases(currentNum, left, right, totalCandies)
 			totalCandies.append(candy)
+	#Handle repeating 3s caused by consecutive occurence of currentNum < left and currentNum > right
+	for i in range(1,n):
+		if totalCandies[i] <= totalCandies[i - 1] and arr[i] > arr[i - 1]:
+			totalCandies[i] = totalCandies[i - 1] + 1
+	for i in range(n-2,-1,-1):
+		if totalCandies[i] <= totalCandies[i + 1] and arr[i] > arr[i + 1]:
+			totalCandies[i] = totalCandies[i + 1] + 1
 	return sum(totalCandies)
-
+	
 print(candies(n, arr))
 #Expects 205598 for arr -- getting 200679 -- difference 4919
 #Expects 161282 for arr2 -- getting 160313 -- difference 969
 def correctSolution(n, arr):
 	dp =[1]*n
-			for i in range(1,n):
-							if arr[i] > arr[i-1]:
-									dp[i] = dp[i]+dp[i-1]
-			for i in range(n-2,-1,-1):
-					if arr[i]>arr[i+1] and dp[i] <= dp[i+1]:
-							dp[i]= dp[i+1]+1
-			return sum(dp)
+	for i in range(1,n):
+		if arr[i] > arr[i-1]:
+			dp[i] = dp[i]+dp[i-1]
+	for i in range(n-2,-1,-1):
+		if arr[i]>arr[i+1] and dp[i] <= dp[i+1]:
+			dp[i]= dp[i+1]+1
+	return sum(dp)
+
+print(correctSolution(n, arr))
