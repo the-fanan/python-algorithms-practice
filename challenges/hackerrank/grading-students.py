@@ -5,7 +5,11 @@
 #if grade is less than 38, leave as is
 
 # grades array 
-for idx, grade in enumerate(grades):
-	if not (grade < 38 or grade % 5 < 3):
-		grades[idx] = grade + (5 - (grade %5 ))
+def getGrades(grades):
+	for idx, grade in enumerate(grades):
+		if not (grade < 38 or grade % 5 < 3):
+			grades[idx] = grade + (5 - (grade %5 ))
 	return grades  
+
+l = .5
+print(l % 10)
