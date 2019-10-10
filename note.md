@@ -24,5 +24,5 @@ That is if (A%K) + (B%K) == K
 
 PITFALLS
 ===========
-1. Try not to confuse SUB-SET with SUB-ARRAY OR SUB-STRING
+1. Try not to confuse SUB-SET, SUB-SEQUENCE, SUB-ARRAY / SUB-STRING
 2. For sequential lists 1 <= a[i] <= n -- should not be confused with from 1 <= a[i] <= 10^x
