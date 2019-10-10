@@ -1,34 +1,24 @@
 l = [1,2,3,4,5]
-
+r = [1,2,3,4,5]
 def rotateLeft(l, rotations):
 	n = len(l)
-
-	if n == rotations:
+	rotations = rotations % n
+	if rotations == 0:
 		return l
-	elif n < rotations:
-		if rotations % n == 0:
-			return l
-		else:
-			rotations = rotations % n
-	l = l[rotations:] + l[:rotations]
+	else:
+		l = l[rotations:] + l[:rotations]
 	return l
 
-#l = rotateLeft(l, 51)
+print(rotateLeft(l, 2))
 
 
 def rotateRight(l, rotations):
 	n = len(l)
-
+	rotations = rotations % n
 	if n == rotations:
 		return l
-	elif n < rotations:
-		if rotations % n == 0:
-			return l
-		else:
-			rotations = rotations % n
-	l = l[n - rotations:] + l[:n - rotations]
+	else:
+		l = l[n - rotations:] + l[:n - rotations]
 	return l
-
-l = rotateRight(l, 7)
-print(l)
+print(rotateRight(r, 2))
 
