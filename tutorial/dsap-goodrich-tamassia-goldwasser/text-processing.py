@@ -50,8 +50,8 @@ def boyerMoorePatternMatch(haystack, needle):
 		else:
 			# a mismatch occured
 			# if the mismatched characer is contained in the needle set j to it's index else set j to -1
-			# mismatch occurs before character was aligned -- use m - j + 1
-			# mismatch occurs after character that was aligned use m - k
+			# mismatch occurs before character was aligned -- use n - j + 1
+			# mismatch occurs after character that was aligned use n - k
 			j = last.get(haystack[i], -1)
 			i += n - min(k,j+1)
 			#restart k
@@ -97,3 +97,38 @@ def knuthMorrisPratt(haystack, needle):
 			j += 1
 	return -1
 #print(knuthMorrisPratt(haystack, needle))
+
+
+
+def myBoyerMooreImplementation(haystack, needle):
+	"""Boyer Moore Algorithm special case where both strings have no repeating characters
+
+	Parameters:
+	haystack (str): string to be searched
+	needle (str): string to be found
+
+	Returns:
+	int: index where matched pattern begins in haystack or -1
+	"""
+	h,n = len(haystack), len(needle)
+	lid = {}
+	#build last index dictionary
+	for i in range(n):
+		lid[needle[i]] = i
+	
+	i = n - 1
+	j = n - 1
+
+	while i < h:	
+		if needle[j] == haystack[i]:
+			if j == 0:
+				return i
+			i -= 1
+			j -= 1
+		else:
+			#a mismatch
+			k = lid.get(haystack[i], -1)
+			i += n - min(j, k + 1)
+			#reset j
+			j = n - 1
+	return -1
