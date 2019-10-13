@@ -132,3 +132,48 @@ def myBoyerMooreImplementation(haystack, needle):
 			#reset j
 			j = n - 1
 	return -1
+
+def lpsGenerator(needle):
+	n = len(needle)
+	i = 0
+	j = 1
+	lps = [0] * n 
+
+	while j < n:
+		if needle[j] == needle[i]:
+			lps[j] = lps[j - 1] + 1
+			j += 1
+			i += 1
+		else:
+			if i == 0:
+				j += 1
+			else:
+				i = lps[i] - 1
+	return lps
+
+def KMP(haystack, needle):
+	"""Knuth Morris Pratt Algorithm
+
+	Parameters:
+	haystack (str): string to be searched
+	needle (str): string to be found
+
+	Returns:
+	int: index where matched pattern begins in haystack or -1
+	"""
+	h,n = len(haystack), len(needle)
+	i = 0
+	j = 0
+	lps = lpsGenerator(needle)
+	while i < h:
+		if haystack[i] == needle[j]:
+			if j == n - 1:
+				return i - n + 1 
+			i += 1
+			j += 1
+		else:
+			if j > 0:
+				j = lps[j - 1]
+			else:
+				i += 1
+	return -1
