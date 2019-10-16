@@ -15,7 +15,9 @@ class RunningMedian(object):
             self.d[val] -= 1
     #IMPORTANT!!!!!
     def median(self) -> int:
+        #the maximum length of array // 2
         a = int(self.maxLen / 2)
+        #
         b = a + 1
         mid1 = None
         mid2 = None
